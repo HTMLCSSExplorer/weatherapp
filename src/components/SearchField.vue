@@ -56,7 +56,7 @@ const getQuery = async () => {
 const getWeatherData = async (cityId) => {
   await axios(
     `http://api.weatherapi.com/v1/current.json?key=402165f15f1142a194930802240509&q=id:${cityId}`,
-  ).then((res) => searchTerm.weatherData=(res.data))
+  ).then((res) => (searchTerm.weatherData = res.data))
   await getForecastData(cityId)
   emit('weather-data', searchTerm.weatherData, searchTerm.forecastData)
   resetInput()
@@ -64,7 +64,7 @@ const getWeatherData = async (cityId) => {
 const getForecastData = async (cityId) => [
   await axios(
     `http://api.weatherapi.com/v1/forecast.json?key=402165f15f1142a194930802240509&q=id:${cityId}`,
-  ).then((res) => searchTerm.forecastData=(res.data)),
+  ).then((res) => (searchTerm.forecastData = res.data)),
 ]
 const resetInput = () => {
   searchTerm.query = ''
