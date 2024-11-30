@@ -44,7 +44,7 @@ const getQuery = async () => {
     if (searchTerm.query !== '') {
       await axios
         .get(
-          `http://api.weatherapi.com/v1/search.json?key=402165f15f1142a194930802240509&q=${searchTerm.query}`,
+          `https://api.weatherapi.com/v1/search.json?key=402165f15f1142a194930802240509&q=${searchTerm.query}`,
         )
         .then((res) => {
           searchTerm.results = res.data
@@ -55,7 +55,7 @@ const getQuery = async () => {
 
 const getWeatherData = async (cityId) => {
   await axios(
-    `http://api.weatherapi.com/v1/current.json?key=402165f15f1142a194930802240509&q=id:${cityId}`,
+    `https://api.weatherapi.com/v1/current.json?key=402165f15f1142a194930802240509&q=id:${cityId}`,
   ).then((res) => (searchTerm.weatherData = res.data))
   await getForecastData(cityId)
   emit('weather-data', searchTerm.weatherData, searchTerm.forecastData)
@@ -63,7 +63,7 @@ const getWeatherData = async (cityId) => {
 }
 const getForecastData = async (cityId) => [
   await axios(
-    `http://api.weatherapi.com/v1/forecast.json?key=402165f15f1142a194930802240509&q=id:${cityId}`,
+    `https://api.weatherapi.com/v1/forecast.json?key=402165f15f1142a194930802240509&q=id:${cityId}`,
   ).then((res) => (searchTerm.forecastData = res.data)),
 ]
 const resetInput = () => {
